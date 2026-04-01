@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date - Jhon & Keyla</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --olivo: #556b2f; 
+            --olivo-transparente: rgba(85, 107, 47, 0.9);
+            --crema: #fdfaf0; 
+        }
+
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Montserrat', sans-serif; background-color: #1a1a1a; }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 90%;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .versiculo {
+            font-size: 0.85rem;
+            font-style: italic;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+        }
+
+        h2 { letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 5px; font-weight: 400; }
+        
+        h1 { 
+            font-family: 'Dancing Script', cursive; 
+            font-size: clamp(3rem, 12vw, 5.5rem); 
+            margin: 0; 
+            line-height: 1.1;
+        }
+
+        .fecha-box {
+            margin: 25px auto;
+            display: inline-block;
+            border-top: 1px solid var(--olivo);
+            border-bottom: 1px solid var(--olivo);
+            padding: 10px 30px;
+        }
+
+        .fecha { font-size: 1.5rem; font-weight: 600; letter-spacing: 3px; }
+
+        .lugar { 
+            font-size: 0.75rem; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            margin-bottom: 40px;
+            color: var(--crema);
+        }
+
+        .btn-confirmar {
+            background-color: var(--olivo);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px; /* Estilo más cuadrado como en tu captura */
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-confirmar:hover { background-color: #6b8e23; transform: scale(1.02); }
+
+        #music-btn {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--olivo-transparente);
+            color: white; border: none; width: 45px; height: 45px;
+            border-radius: 50%; cursor: pointer; z-index: 100;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Ajustes para Móvil */
+        @media (max-width: 600px) {
+            .versiculo { font-size: 0.75rem; margin-bottom: 20px; }
+            h2 { font-size: 0.7rem; }
+            .fecha { font-size: 1.2rem; }
+            .lugar { font-size: 0.65rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <div class="versiculo">
+                "El amor es paciente y bondadoso; no es envidioso ni jactancioso, no se envanece; no hace nada impropio; no es egoísta ni se irrita; no es rencoroso" <br> <strong>- 1 Corintios 13:4-5</strong>
+            </div>
+
+            <h2>SAVE THE DATE</h2>
+            <h1>Jhon & Keyla</h1>
+
+            <div class="fecha-box">
+                <span class="fecha">07 . NOV . 2026</span>
+            </div>
+
+            <div class="lugar">Vía a la Costa, Guayaquil</div>
+
+            <a href="https://wa.me/593978941301?text=¡Hola!%20Confirmo%20mi%20asistencia%20para%20la%20boda." class="btn-confirmar">
+                <i class="fab fa-whatsapp"></i> CONFIRMAR ASISTENCIA
+            </a>
+        </div>
+    </section>
+
+    <audio id="musica" loop><source src="musica-save.mp3" type="audio/mpeg"></audio>
+    <button id="music-btn" onclick="toggleMusic()"><i id="icon" class="fas fa-music"></i></button>
+
+    <script>
+        const audio = document.getElementById('musica');
+        const icon = document.getElementById('icon');
+        function toggleMusic() {
+            if (audio.paused) { audio.play(); icon.className = 'fas fa-pause'; }
+            else { audio.pause(); icon.className = 'fas fa-music'; }
+        }
+        document.body.addEventListener('click', () => { if (audio.paused) toggleMusic(); }, { once: true });
+    </script>
+</body>
+</html>
