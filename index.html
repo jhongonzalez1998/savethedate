@@ -5,106 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save the Date - Jhon & Keyla</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { 
             --olivo: #556b2f; 
             --olivo-transparente: rgba(85, 107, 47, 0.9);
             --crema: #fdfaf0; 
+            --sombra-texto: 2px 2px 12px rgba(0, 0, 0, 0.9);
         }
 
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Montserrat', sans-serif; background-color: #1a1a1a; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Montserrat', sans-serif; background-color: #1a1a1a; color: white; overflow: hidden; }
 
         .hero {
             position: relative;
             height: 100vh;
             width: 100%;
+            /* Ajusta el 0.6 si quieres más o menos oscuridad en la foto */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('fondo.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
             text-align: center;
         }
 
-        .container {
-            padding: 20px;
-            max-width: 90%;
-            animation: fadeIn 2.5s ease-in-out;
-        }
+        .container { padding: 20px; max-width: 900px; animation: fadeIn 2.5s ease-in-out; }
 
-        .versiculo {
-            font-size: 0.85rem;
-            font-style: italic;
-            max-width: 400px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
-            font-weight: 300;
-            color: rgba(255,255,255,0.9);
-        }
-
-        h2 { letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 5px; font-weight: 400; }
+        h2 { letter-spacing: 6px; font-size: 0.9rem; margin-bottom: 10px; font-weight: 300; text-shadow: var(--sombra-texto); color: var(--crema); }
         
+        /* NUEVA TIPOGRAFÍA PARA NOMBRES */
         h1 { 
-            font-family: 'Dancing Script', cursive; 
-            font-size: clamp(3rem, 12vw, 5.5rem); 
-            margin: 0; 
-            line-height: 1.1;
+            font-family: 'Great Vibes', cursive; 
+            font-size: clamp(4rem, 15vw, 7rem); 
+            margin: 10px 0; 
+            font-weight: 400;
+            text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.8);
+            color: white;
         }
 
         .fecha-box {
-            margin: 25px auto;
-            display: inline-block;
-            border-top: 1px solid var(--olivo);
-            border-bottom: 1px solid var(--olivo);
-            padding: 10px 30px;
+            margin: 15px auto; display: inline-block;
+            border-top: 1.5px solid var(--olivo); border-bottom: 1.5px solid var(--olivo); padding: 12px 40px;
         }
+        .fecha { font-size: 1.6rem; font-weight: 600; letter-spacing: 4px; text-shadow: var(--sombra-texto); }
 
-        .fecha { font-size: 1.5rem; font-weight: 600; letter-spacing: 3px; }
+        .lugar { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; text-shadow: var(--sombra-texto); }
 
-        .lugar { 
-            font-size: 0.75rem; 
-            letter-spacing: 3px; 
-            text-transform: uppercase; 
-            margin-bottom: 40px;
-            color: var(--crema);
+        /* Estilos del Contador */
+        .countdown-container {
+            display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;
+        }
+        .countdown-item { display: flex; flex-direction: column; align-items: center; min-width: 70px; }
+        .number { font-size: 2rem; font-weight: 600; color: white; text-shadow: var(--sombra-texto); }
+        .label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; color: var(--crema); }
+
+        /* VERSÍCULO ANTES DEL BOTÓN */
+        .versiculo {
+            font-size: 0.8rem; 
+            font-style: italic; 
+            max-width: 500px; 
+            margin: 0 auto 25px;
+            line-height: 1.7; 
+            font-weight: 300; 
+            text-shadow: var(--sombra-texto);
+            color: rgba(255,255,255,0.9);
         }
 
         .btn-confirmar {
-            background-color: var(--olivo);
-            color: white;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 5px; /* Estilo más cuadrado como en tu captura */
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            background-color: var(--olivo); color: white; padding: 16px 40px;
+            text-decoration: none; border-radius: 4px; font-size: 0.85rem;
+            font-weight: 600; letter-spacing: 2px; transition: 0.4s;
+            display: inline-flex; align-items: center; gap: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
         }
-
-        .btn-confirmar:hover { background-color: #6b8e23; transform: scale(1.02); }
+        .btn-confirmar:hover { background-color: #6b8e23; transform: scale(1.05); }
 
         #music-btn {
-            position: fixed; bottom: 20px; right: 20px;
-            background: var(--olivo-transparente);
-            color: white; border: none; width: 45px; height: 45px;
-            border-radius: 50%; cursor: pointer; z-index: 100;
+            position: fixed; bottom: 25px; right: 25px;
+            background: var(--olivo-transparente); color: white; border: none;
+            width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 100;
             display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Ajustes para Móvil */
         @media (max-width: 600px) {
-            .versiculo { font-size: 0.75rem; margin-bottom: 20px; }
-            h2 { font-size: 0.7rem; }
-            .fecha { font-size: 1.2rem; }
-            .lugar { font-size: 0.65rem; }
+            .countdown-container { gap: 10px; }
+            .number { font-size: 1.5rem; }
+            .countdown-item { min-width: 50px; }
+            .versiculo { font-size: 0.75rem; padding: 0 10px; }
         }
     </style>
 </head>
@@ -112,10 +104,6 @@
 
     <section class="hero">
         <div class="container">
-            <div class="versiculo">
-                "El amor es paciente y bondadoso; no es envidioso ni jactancioso, no se envanece; no hace nada impropio; no es egoísta ni se irrita; no es rencoroso" <br> <strong>- 1 Corintios 13:4-5</strong>
-            </div>
-
             <h2>SAVE THE DATE</h2>
             <h1>Jhon & Keyla</h1>
 
@@ -125,7 +113,30 @@
 
             <div class="lugar">Vía a la Costa, Guayaquil</div>
 
-            <a href="https://wa.me/593978941301?text=¡Hola!%20Confirmo%20mi%20asistencia%20para%20la%20boda." class="btn-confirmar">
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Minutos</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">Segundos</span>
+                </div>
+            </div>
+
+            <div class="versiculo">
+                "El amor es paciente y bondadoso; no es envidioso ni jactancioso, no se envanece; no hace nada impropio; no es egoísta ni se irrita; no es rencoroso" <br> <strong>- 1 Corintios 13:4-5</strong>
+            </div>
+
+            <a href="https://wa.me/593978941301?text=¡Hola%20Jhon%20y%20Keyla!%20Confirmo%20mi%20asistencia%20para%20la%20boda.%20¡Qué%20emoción!" class="btn-confirmar">
                 <i class="fab fa-whatsapp"></i> CONFIRMAR ASISTENCIA
             </a>
         </div>
@@ -135,6 +146,17 @@
     <button id="music-btn" onclick="toggleMusic()"><i id="icon" class="fas fa-music"></i></button>
 
     <script>
+        const weddingDate = new Date("Nov 7, 2026 17:00:00").getTime();
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+            if (distance < 0) { clearInterval(countdown); document.querySelector(".countdown-container").innerHTML = "¡HOY ES EL DÍA!"; }
+        }, 1000);
+
         const audio = document.getElementById('musica');
         const icon = document.getElementById('icon');
         function toggleMusic() {
