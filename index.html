@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="💍 Jhon & Keyla | ¡Save the Date! 💍">
+    <meta property="og:description" content="Te invitamos a nuestra boda el 07.NOV.2026. ¡Confirma aquí! ✨">
+    <meta property="og:url" content="https://jhongonzalez1998.github.io/savethedate/">
+
+    <meta property="og:image" content="https://jhongonzalez1998.github.io/savethedate/miniatura.jpg">
+    <meta property="og:image:secure_url" content="https://jhongonzalez1998.github.io/savethedate/miniatura.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://jhongonzalez1998.github.io/savethedate/miniatura.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <title>Jhon & Keyla | Save the date 💍</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Playwrite+IE:wght@100..400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --olivo: #a1883c;
+            --sombra: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('foto.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- LOGO --- */
+        .sd-main {
+            font-weight: 30;
+            text-transform: uppercase;
+            letter-spacing: 12px;
+            font-size: clamp(2.2rem, 10vw, 4.5rem);
+            text-shadow: var(--sombra);
+            position: relative;
+        }
+
+        .sd-script {
+            font-weight: 30;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playwrite IE', cursive;
+            font-size: clamp(1.8rem, 8vw, 3rem);
+        }
+
+        /* --- FORMULARIO DESPLEGABLE --- */
+        .bottom-content {
+            width: 100%;
+            max-width: 320px;
+            z-index: 10;
+        }
+
+        .btn-confirmar {
+            background-color: var(--olivo);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .contenedor-desplegable {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 0 0 10px 10px;
+            margin-top: -2px;
+        }
+
+        .contenedor-desplegable.abierto {
+            max-height: 1200px;
+            padding-bottom: 20px;
+        }
+
+        .form-content {
+            padding: 25px 20px;
+            color: #333;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+        }
+
+        /* Contenedor dinámico de nombres */
+        #lista-acompanantes {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: none;
+            border-left: 4px solid var(--olivo);
+        }
+
+        .cita-biblica {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 25px;
+            text-align: center;
+            /* ESTA ES LA LÍNEA MÁGICA */
+            width: 100%;
+            /* ASEGURA QUE OCUPE TODO EL ANCHO PARA PODER CENTRAR */
+        }
+
+        .btn-enviar {
+            background-color: var(--olivo);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        #music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            z-index: 100;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="top-content text-center">
+            <div style="position:relative; display:inline-block;">
+                <div class="sd-main">SAVE&nbsp;&nbsp;DATE</div>
+                <div class="sd-script">the&nbsp;</div>
+            </div>
+            <h1
+                style="font-size: clamp(0.9rem, 4vw, 1.4rem); letter-spacing: 8px; text-transform: uppercase; margin-top: -5px; text-align: center;">
+                Jhon & Keyla</h1>
+        </div>
+
+        <div class="bottom-content">
+            <div style="font-size: 1.2rem; letter-spacing: 6px; margin-bottom: 8px; text-align:center;">07 . NOV . 2026
+            </div>
+            <div class="cita-biblica">1 Corintios 13:4-5</div>
+            <button id="toggleBtn" class="btn-confirmar">Confirmar Asistencia</button>
+
+            <div id="menuDesplegable" class="contenedor-desplegable">
+                <div class="form-content">
+                    <form id="form-boda">
+                        <div class="input-group">
+                            <label>Tu Nombre y Apellido</label>
+                            <input type="text" name="nombre" required placeholder="Tu nombre">
+                        </div>
+                        <div class="input-group">
+                            <label>¿Asistirás?</label>
+                            <select name="asistencia" id="select-asistencia" required>
+                                <option value="" disabled selected>Selecciona...</option>
+                                <option value="Sí">Sí, asistiré 💍</option>
+                                <option value="No">No podré asistir ✨</option>
+                            </select>
+                        </div>
+                        <div id="seccion-admision" style="display:none;">
+                            <div class="input-group">
+                                <label>Número Total de Personas</label>
+                                <input type="number" id="num-personas" name="personas" min="1" max="10" value="1">
+                            </div>
+                            <div id="lista-acompanantes">
+                                <label
+                                    style="font-size: 0.6rem; color: var(--olivo); font-weight: 600; margin-bottom: 10px; display: block;">NOMBRES
+                                    DE TUS ACOMPAÑANTES:</label>
+                                <div id="inputs-dinamicos"></div>
+                            </div>
+                        </div>
+                        <button type="submit" id="btn-submit" class="btn-enviar">Confirmar</button>
+                    </form>
+                    <div id="mensaje-exito"
+                        style="display:none; text-align:center; color: var(--olivo); font-weight: 600;">¡Gracias!
+                        Guardamos tu respuesta.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <audio id="musica" loop>
+        <source src="musica-save.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-btn" onclick="playM()"><i id="icon" class="fas fa-music"></i></button>
+
+    <script>
+        const toggleBtn = document.getElementById("toggleBtn");
+        const menu = document.getElementById("menuDesplegable");
+        const selectAsistencia = document.getElementById("select-asistencia");
+        const seccionAdmision = document.getElementById("seccion-admision");
+        const numPersonas = document.getElementById("num-personas");
+        const listaAcompanantes = document.getElementById("lista-acompanantes");
+        const inputsDinamicos = document.getElementById("inputs-dinamicos");
+
+        toggleBtn.onclick = () => menu.classList.toggle("abierto");
+
+        // Mostrar admisión solo si dice que SÍ asiste
+        selectAsistencia.onchange = () => {
+            seccionAdmision.style.display = (selectAsistencia.value === "Sí") ? "block" : "none";
+        };
+
+        // Generar campos de nombres dinámicamente
+        numPersonas.oninput = () => {
+            const cantidad = parseInt(numPersonas.value);
+            inputsDinamicos.innerHTML = "";
+            if (cantidad > 1) {
+                listaAcompanantes.style.display = "block";
+                for (let i = 1; i < cantidad; i++) {
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.placeholder = `Nombre acompañante ${i}`;
+                    input.className = "input-extra"; // Clase para recolectar luego
+                    input.style.marginBottom = "8px";
+                    input.style.width = "100%";
+                    input.style.padding = "8px";
+                    input.style.border = "1px solid #ccc";
+                    input.style.borderRadius = "4px";
+                    inputsDinamicos.appendChild(input);
+                }
+            } else {
+                listaAcompanantes.style.display = "none";
+            }
+        };
+
+        // Enviar a Google Sheets
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzXUi3WWTzWYRom4wcUoMuoEqrtR4sS2JfGFmXriSm2e_ArtH7_Lr5NSbik2QBiMg-KFQ/exec';
+        const form = document.getElementById('form-boda');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            document.getElementById('btn-submit').innerText = "Enviando...";
+
+            // Recolectar nombres de acompañantes en un solo texto
+            const extras = Array.from(document.querySelectorAll('.input-extra')).map(i => i.value).join(", ");
+
+            const formData = new FormData(form);
+            formData.append('acompanantes', extras); // Enviamos los nombres extras
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(() => {
+                    form.style.display = 'none';
+                    document.getElementById('mensaje-exito').style.display = 'block';
+                    setTimeout(() => location.reload(), 3000);
+                });
+        });
+
+        const a = document.getElementById('musica');
+        function playM() {
+            if (a.paused) { a.play(); document.getElementById('icon').className = 'fas fa-pause'; }
+            else { a.pause(); document.getElementById('icon').className = 'fas fa-music'; }
+        }
+        document.body.addEventListener('click', () => { if (a.paused) playM(); }, { once: true });
+    </script>
+</body>
+
+</html>
